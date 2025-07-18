@@ -7,9 +7,8 @@ import { charactersState } from "../atoms/charactersState";
 const Characters: React.FC = () => {
   const [characters, setCharacters] = useRecoilState(charactersState);
 
-  console.log("yeet characters: ", characters);
   useEffect(() => {
-    // Fetch character data from the correct API URL
+    // Fetch character data from: https://swapi.info/api/people
     fetch("https://swapi.info/api/people")
       .then((res) => res.json())
       // set characters state with the fetched data
