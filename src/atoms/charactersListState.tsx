@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
 // Default state for character list
-export const charactersState = atom<Array<object>>({
-  key: "charactersState",
+export const charactersListState = atom({
+  key: "charactersListState",
   default: [],
 });
