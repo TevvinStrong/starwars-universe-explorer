@@ -1,4 +1,50 @@
+.character-card {
+  border: 2px solid white;
+  border-radius: 15px;
+  height: 50em;
+  width: 30em;
+  margin-left: 12%;
+}
+
+.character-info-img {
+  display: flex;
+  justify-content: center;
+}
+
 .character-info {
-  border: 2px solid black;
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  height: 66%;
+  padding-top: 18%;
+  align-items: center;
+}
+
+span {
+  font-family: sans-serif, Arial, Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.character-info-gender {
+  font-weight: 300;
+  color: silver;
+  font-size: 20px;
+}
+
+.character-info-btn {
+  margin-top: 20px;
+}
+
+.btn {
+  width: 200px;
+  height: 38px;
+  border-radius: 5px;
+  background-color: rgba(87, 199, 133, 1);
+  border: none;
+  font-family: sans-serif, Arial, Helvetica;
+  cursor: pointer;
 }

@@ -1,13 +1,17 @@
+// Package imports
 import { FC } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { Swiper, SwiperSlide } from "swiper/react";
 
+// File imports
 import { charactersListState } from "../atoms/charactersListState";
 import { detailPageState } from "../atoms/detailPageState";
+import StormTrooper from "../images/icons8-star-wars-480.png";
 
-// Styles
+// Component imports
+// import CharacterDetailPage from "./characterDetailPage";
+
+// Style imports
 import "../styles/characterCard.css";
-import "swiper/css";
 
 interface CharacterCardProps {
   index: number;
@@ -32,15 +36,20 @@ const CharacterCard: FC<CharacterCardProps> = ({ index }) => {
     //TODO: Set up route so that when view more is clicked, it navigates to the character detail page
   };
   return (
-    <Swiper spaceBetween={0} slidesPerGroupSkip={1}>
-      <SwiperSlide>
-        <section className="character-info">
-          {name}
-          {gender}
-          <button onClick={openCharacterDetailPage}>View More</button>
-        </section>
-      </SwiperSlide>
-    </Swiper>
+    <div className="character-card">
+      <section className="character-info-img">
+        <img className="img" src={StormTrooper}></img>
+      </section>
+      <section className="character-info">
+        <span className="character-info-name">{name}</span>
+        <span className="character-info-gender">{gender}</span>
+        <div className="character-info-btn">
+          <button className="btn" onClick={openCharacterDetailPage}>
+            View More
+          </button>
+        </div>
+      </section>
+    </div>
   );
 };
 

@@ -1,13 +1,19 @@
+// Package imports
 import { FC, useEffect } from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
+// File imports
 import { charactersListState } from "../atoms/charactersListState";
 
-// Components
+// Component imports
 import CharacterCard from "./characterCard";
 
-// Styles
+// Style imports
 import "../styles/charactersList.css";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const CharactersList: FC = () => {
   const characters = useRecoilValue(charactersListState);
@@ -27,14 +33,23 @@ const CharactersList: FC = () => {
 
   return (
     <div className="characters-container">
-      {characters.map((_, index) => (
-        <div key={index}>
-          {
-            // Render each character using the CharacterCard component
-            <CharacterCard key={index} index={index} />
-          }
-        </div>
-      ))}
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={10}
+        slidesPerView={1}
+        navigation
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+      >
+        {characters.map((_, index) => (
+          <SwiperSlide key={index}>
+            <CharacterCard index={index} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
