@@ -18,3 +18,7 @@ export interface RelatedData {
   species?: string[];
   starships?: string[];
 }
+
+export interface CharacterCardProps {
+  index: number;
+}

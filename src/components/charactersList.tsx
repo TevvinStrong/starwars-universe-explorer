@@ -1,16 +1,12 @@
-// Package imports
 import { FC, useEffect } from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-// File imports
 import { charactersListState } from "../atoms/charactersListState";
 
-// Component imports
 import CharacterCard from "./characterCard";
 
-// Style imports
 import "../styles/charactersList.css";
 import "swiper/css";
 import "swiper/css/navigation";

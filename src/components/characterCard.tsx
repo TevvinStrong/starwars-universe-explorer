@@ -1,18 +1,12 @@
-// Package imports
 import { FC, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 
-// File imports
 import { charactersListState } from "../atoms/charactersListState";
 import StormTrooper from "../images/icons8-star-wars-480.png";
+import { CharacterCardProps } from "../helpers/helpers";
 
-// Style imports
 import "../styles/characterCard.css";
-
-interface CharacterCardProps {
-  index: number;
-}
 
 const CharacterCard: FC<CharacterCardProps> = ({ index }) => {
   // State
