@@ -1,36 +1,22 @@
+// Package imports
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
+// File imports
 import { charactersListState } from "../atoms/charactersListState";
+import { CharacterType } from "../helpers/helpers";
+import { RelatedData } from "../helpers/helpers";
+
+// Style imports
 import "../styles/characterDetailPage.css";
-
-interface Character {
-  name: string;
-  gender: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  homeworld: string;
-  species: string[];
-  starships: string[];
-}
-
-interface RelatedData {
-  homeworld?: string;
-  species?: string[];
-  starships?: string[];
-}
 
 const CharacterDetailPage: FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const characterIndex = parseInt(id || "0", 10);
-  const charactersList = useRecoilValue(charactersListState) as Character[];
+  const charactersList = useRecoilValue(charactersListState) as CharacterType[];
   const character = charactersList[characterIndex];
 
   const [related, setRelated] = useState<RelatedData | null>(null);
