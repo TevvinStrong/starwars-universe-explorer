@@ -1,11 +1,11 @@
-// Package imports
+import { useRecoilState } from "recoil";
 import { Route, Routes } from "react-router-dom";
 
-// Component imports
+import { themeState } from "./atoms/themeState";
+
 import CharactersList from "./components/charactersList";
 import CharacterDetailPage from "./components/characterDetailPage";
 
-// Style imports
 import "./App.css";
 
 /**
@@ -13,8 +13,17 @@ import "./App.css";
  * Typicall using an dependencies that supports the latest version of React is the best way to go, however I wanted to use Recoil for state management
  */
 const App: React.FC = () => {
+  const [theme, setTheme] = useRecoilState(themeState);
+
+  const toggleTheme = () =>
+    setTheme((current) => (current === "light" ? "dark" : "light"));
+
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
+      <button className="theme-toggle-btn" onClick={toggleTheme}>
+        Switch to {theme === "light" ? "Dark" : "Light"} Mode
+      </button>
+
       <Routes>
         <Route path="/" element={<CharactersList />} />
         <Route path="/character/:id" element={<CharacterDetailPage />} />
