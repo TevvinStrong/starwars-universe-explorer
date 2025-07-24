@@ -1,8 +1,9 @@
 // Package imports
-import { RecoilRoot } from "recoil";
+import { Route, Routes } from "react-router-dom";
 
 // Component imports
 import CharactersList from "./components/charactersList";
+import CharacterDetailPage from "./components/characterDetailPage";
 
 // Style imports
 import "./App.css";
@@ -13,12 +14,12 @@ import "./App.css";
  */
 const App: React.FC = () => {
   return (
-    <RecoilRoot>
-      <div className="App">
-        <h1>Star Wars Universe Explorer</h1>
-        <CharactersList />
-      </div>
-    </RecoilRoot>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<CharactersList />} />
+        <Route path="/character/:id" element={<CharacterDetailPage />} />
+      </Routes>
+    </div>
   );
 };
 

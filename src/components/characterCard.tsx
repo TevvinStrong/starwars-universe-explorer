@@ -1,14 +1,11 @@
 // Package imports
-import { FC } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { FC, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 // File imports
 import { charactersListState } from "../atoms/charactersListState";
-import { detailPageState } from "../atoms/detailPageState";
 import StormTrooper from "../images/icons8-star-wars-480.png";
-
-// Component imports
-// import CharacterDetailPage from "./characterDetailPage";
 
 // Style imports
 import "../styles/characterCard.css";
@@ -20,36 +17,42 @@ interface CharacterCardProps {
 const CharacterCard: FC<CharacterCardProps> = ({ index }) => {
   // State
   const charactersList = useRecoilValue(charactersListState);
-  const isOpen = useRecoilValue(detailPageState);
-  const setIsOpen = useSetRecoilState(detailPageState);
-
-  // Also want to ensure the index for swipper
-  const character = charactersList[index];
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   // Destructure character properties
+  const character = charactersList[index];
   const { name, gender } = character;
 
   const openCharacterDetailPage = () => {
-    // Set the detail page state to true to open the character detail page
-    setIsOpen(true);
-
-    //TODO: Set up route so that when view more is clicked, it navigates to the character detail page
+    setLoading(true);
+    setTimeout(() => {
+      navigate(`/character/${index}`);
+    }, 800);
   };
+
   return (
-    <div className="character-card">
-      <section className="character-info-img">
-        <img className="img" src={StormTrooper}></img>
-      </section>
-      <section className="character-info">
-        <span className="character-info-name">{name}</span>
-        <span className="character-info-gender">{gender}</span>
-        <div className="character-info-btn">
-          <button className="btn" onClick={openCharacterDetailPage}>
-            View More
-          </button>
+    <>
+      {loading && (
+        <div className="spinner-overlay">
+          <div className="spinner" />
         </div>
-      </section>
-    </div>
+      )}
+      <div className="character-card">
+        <section className="character-info-img">
+          <img className="img" src={StormTrooper} alt="Character" />
+        </section>
+        <section className="character-info">
+          <span className="character-info-name">{name}</span>
+          <span className="character-info-gender">{gender}</span>
+          <div className="character-info-btn">
+            <button className="btn" onClick={openCharacterDetailPage}>
+              View More
+            </button>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 

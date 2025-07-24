@@ -32,25 +32,30 @@ const CharactersList: FC = () => {
   }, [setCharacters]);
 
   return (
-    <div className="characters-container">
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={10}
-        slidesPerView={1}
-        navigation
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-      >
-        {characters.map((_, index) => (
-          <SwiperSlide key={index}>
-            <CharacterCard index={index} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <>
+      <div className="character-list-header">
+        <h1 className="header">Star Wars Universe Explorer</h1>
+      </div>
+      <div className="characters-container">
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={10}
+          slidesPerView={1}
+          navigation
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {characters.map((_, index) => (
+            <SwiperSlide key={index}>
+              <CharacterCard index={index} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </>
   );
 };
 
