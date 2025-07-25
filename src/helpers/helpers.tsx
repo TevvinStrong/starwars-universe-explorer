@@ -19,6 +19,7 @@ export interface RelatedData {
   starships?: string[];
 }
 
+// Define props for CharacterCard component
 export interface CharacterCardProps {
   index: number;
 }
