@@ -6,7 +6,7 @@ import { themeState } from "./atoms/themeState";
 import CharacterList from "./components/characterList";
 import CharacterDetailPage from "./components/characterDetailPage";
 
-import "./App.css";
+import "./styles/App.css";
 
 /**
  * Not Ideal but I decided to install an oldeer version of react@18.3.1, Reocil does not support the latest version of React @19.1.0
