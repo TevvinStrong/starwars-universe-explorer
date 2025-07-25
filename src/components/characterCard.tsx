@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 
-import { charactersListState } from "../atoms/charactersListState";
+import { characterListState } from "../atoms/characterListState";
 import StormTrooper from "../images/icons8-star-wars-480.png";
 import { CharacterCardProps } from "../helpers/helpers";
 
@@ -10,7 +10,7 @@ import "../styles/characterCard.css";
 
 const CharacterCard: FC<CharacterCardProps> = ({ index }) => {
   // State
-  const charactersList = useRecoilValue(charactersListState);
+  const charactersList = useRecoilValue(characterListState);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 

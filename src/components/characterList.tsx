@@ -3,17 +3,17 @@ import { useSetRecoilState, useRecoilValue } from "recoil";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-import { charactersListState } from "../atoms/charactersListState";
+import { characterListState } from "../atoms/characterListState";
 
 import CharacterCard from "./characterCard";
 
-import "../styles/charactersList.css";
+import "../styles/characterList.css";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const CharactersList: FC = () => {
-  const characters = useRecoilValue(charactersListState);
-  const setCharacters = useSetRecoilState(charactersListState);
+const CharacterList: FC = () => {
+  const characters = useRecoilValue(characterListState);
+  const setCharacters = useSetRecoilState(characterListState);
 
   useEffect(() => {
     // Fetch character data from: https://swapi.info/api/people
@@ -55,4 +55,4 @@ const CharactersList: FC = () => {
   );
 };
 
-export default CharactersList;
+export default CharacterList;

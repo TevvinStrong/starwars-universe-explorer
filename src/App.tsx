@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { themeState } from "./atoms/themeState";
 
-import CharactersList from "./components/charactersList";
+import CharacterList from "./components/characterList";
 import CharacterDetailPage from "./components/characterDetailPage";
 
 import "./App.css";
@@ -25,7 +25,7 @@ const App: React.FC = () => {
       </button>
 
       <Routes>
-        <Route path="/" element={<CharactersList />} />
+        <Route path="/" element={<CharacterList />} />
         <Route path="/character/:id" element={<CharacterDetailPage />} />
       </Routes>
     </div>

@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 // File imports
-import { charactersListState } from "../atoms/charactersListState";
+import { characterListState } from "../atoms/characterListState";
 import { CharacterType } from "../helpers/helpers";
 import { RelatedData } from "../helpers/helpers";
 
@@ -16,7 +16,7 @@ const CharacterDetailPage: FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const characterIndex = parseInt(id || "0", 10);
-  const charactersList = useRecoilValue(charactersListState) as CharacterType[];
+  const charactersList = useRecoilValue(characterListState) as CharacterType[];
   const character = charactersList[characterIndex];
 
   const [related, setRelated] = useState<RelatedData | null>(null);
