@@ -78,3 +78,47 @@ span {
   font-family: sans-serif, Arial, Helvetica;
   cursor: pointer;
 }
+
+/* Media Queries */
+
+/* Iphone 14 Pro Max */
+@media screen and (max-width: 430px) {
+  .character-card {
+    border: 2px solid white;
+    border-radius: 15px;
+    height: 46em;
+    margin: 77% 0% 0% 0%;
+    width: 100%;
+  }
+
+  .character-info {
+    height: 45%;
+  }
+}
+
+/* Iphone 12 Pro */
+@media screen and (max-width: 390px) {
+  .character-card {
+    border: 2px solid white;
+    border-radius: 15px;
+    height: 46em;
+    margin: 77% 0% 0% 0%;
+    width: 100%;
+  }
+
+  .character-info {
+    height: 45%;
+  }
+}
+
+/* Iphone SE */
+@media screen and (max-width: 375px) {
+  .character-card {
+    margin-top: 17rem;
+    height: 39em;
+  }
+
+  .character-info {
+    padding-top: 18%;
+  }
+}

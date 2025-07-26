@@ -21,3 +21,21 @@
 .swiper-button-prev {
   color: black !important;
 }
+
+/* Media Queries */
+
+/* Iphone 14 Pro Max */
+@media screen and (max-width: 430px) {
+  .characters-container {
+    padding: 9px;
+    height: 50vh;
+  }
+}
+
+/* Iphone SE */
+@media screen and (max-width: 375px) {
+  .header {
+    font-size: 25px;
+    padding-bottom: 20px;
+  }
+}

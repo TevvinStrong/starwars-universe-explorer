@@ -50,3 +50,26 @@
 .theme-toggle-btn:hover {
   background-color: rgba(87, 199, 133, 1);
 }
+
+/* Media Queries */
+
+/* Iphone 14 Pro Max */
+@media (max-width: 430px) {
+  .theme-toggle-btn {
+    margin-top: 104px;
+  }
+}
+
+/* Iphone 12 Pro */
+@media (max-width: 390px) {
+  .theme-toggle-btn {
+    margin: 89px;
+  }
+}
+
+/* Iphone SE */
+@media (max-width: 375px) {
+  .theme-toggle-btn {
+    display: none;
+  }
+}
