@@ -56,14 +56,14 @@
 /* Iphone 14 Pro Max */
 @media (max-width: 430px) {
   .theme-toggle-btn {
-    margin-top: 104px;
+    display: none;
   }
 }
 
 /* Iphone 12 Pro */
 @media (max-width: 390px) {
   .theme-toggle-btn {
-    margin: 89px;
+    display: none;
   }
 }
 

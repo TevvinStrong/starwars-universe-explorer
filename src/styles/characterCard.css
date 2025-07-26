@@ -101,7 +101,7 @@ span {
   .character-card {
     border: 2px solid white;
     border-radius: 15px;
-    height: 46em;
+    height: 42em;
     margin: 77% 0% 0% 0%;
     width: 100%;
   }
@@ -111,11 +111,18 @@ span {
   }
 }
 
+/* Iphone XR */
+@media screen and (max-width: 414px) {
+  .character-info {
+    height: 47%;
+  }
+}
+
 /* Iphone SE */
 @media screen and (max-width: 375px) {
   .character-card {
     margin-top: 17rem;
-    height: 39em;
+    height: 35em;
   }
 
   .character-info {
