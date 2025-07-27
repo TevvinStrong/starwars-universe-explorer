@@ -56,3 +56,53 @@
   color: #2a7b9b;
   font-style: italic;
 }
+
+/* Media Queries */
+
+/* Iphone 14 Pro Max */
+@media (max-width: 430px) {
+  .character-detail-container {
+    padding: 0rem;
+  }
+
+  .detail-btn {
+    margin: 1rem 20rem 0rem 0rem;
+    width: 5rem;
+  }
+}
+
+/* Iphone SE */
+@media (max-width: 375px) {
+  .character-detail-container {
+    padding: 0rem;
+  }
+
+  .detail-btn {
+    margin: 1rem 16rem 0rem 0rem;
+    width: 5rem;
+  }
+}
+
+/* Iphone XR */
+@media (max-width: 414px) {
+  .character-detail-container {
+    padding: 0rem;
+  }
+
+  .detail-btn {
+    margin: 1rem 18rem 0rem 0rem;
+    width: 5rem;
+  }
+}
+
+/* Samsung Galaxy S8+ */
+@media (max-width: 360px) {
+  .character-detail-container {
+    padding: 0rem;
+  }
+
+  .detail-btn {
+    margin: 1rem 16rem 0rem 0rem;
+    width: 5rem;
+  }
+}
