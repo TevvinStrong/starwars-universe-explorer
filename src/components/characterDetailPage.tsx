@@ -1,15 +1,12 @@
-// Package imports
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-// File imports
 import { characterListState } from "../atoms/characterListState";
 import { CharacterType } from "../helpers/helpers";
 import { RelatedData } from "../helpers/helpers";
 
-// Style imports
 import "../styles/characterDetailPage.css";
 
 const CharacterDetailPage: FC = () => {
