@@ -1,11 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState, useResetRecoilState } from "recoil";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
+import {
+  relatedDataState,
+  relatedDataLoadingState,
+} from "../atoms/relatedDataState";
 import { characterListState } from "../atoms/characterListState";
 import { CharacterType } from "../helpers/helpers";
-import { RelatedData } from "../helpers/helpers";
 
 import "../styles/characterDetailPage.css";
 
@@ -16,15 +19,19 @@ const CharacterDetailPage: FC = () => {
   const charactersList = useRecoilValue(characterListState) as CharacterType[];
   const character = charactersList[characterIndex];
 
-  const [related, setRelated] = useState<RelatedData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [related, setRelated] = useRecoilState(relatedDataState);
+  const [loading, setLoading] = useRecoilState(relatedDataLoadingState);
+  const resetRelated = useResetRecoilState(relatedDataState);
+  const resetLoading = useResetRecoilState(relatedDataLoadingState);
 
   useEffect(() => {
     if (!character) return;
 
+    setLoading(true);
+
     async function fetchRelated() {
       try {
-        const [home, ...others] = await Promise.all([
+        const [home, ...species] = await Promise.all([
           character.homeworld
             ? fetch(character.homeworld).then((r) => r.json())
             : null,
@@ -37,7 +44,7 @@ const CharacterDetailPage: FC = () => {
 
         setRelated({
           homeworld: home?.name,
-          species: others.map((s) => s.name),
+          species: species.map((s) => s.name),
           starships: starshipsData.map((s) => s.name),
         });
       } catch (err) {
@@ -50,7 +57,12 @@ const CharacterDetailPage: FC = () => {
     }
 
     fetchRelated();
-  }, [character]);
+
+    return () => {
+      resetRelated();
+      resetLoading();
+    };
+  }, [character, setRelated, setLoading, resetRelated, resetLoading]);
 
   if (!character) {
     return (
@@ -67,7 +79,7 @@ const CharacterDetailPage: FC = () => {
       <h1 className="character-detail-header">{character.name}</h1>
 
       {loading ? (
-        <div className="spinner-overlay">
+        <div className="spinner-overlay" role="progressbar">
           <div className="spinner" />
         </div>
       ) : (
@@ -101,15 +113,15 @@ const CharacterDetailPage: FC = () => {
               </span>
             )}
 
-            {related?.species && related.species.length > 0 && (
+            {(related?.species ?? []).length > 0 && (
               <span className="related-field">
-                <strong>Species: </strong> {related.species.join(", ")}
+                <strong>Species: </strong> {related!.species!.join(", ")}
               </span>
             )}
 
-            {related?.starships && related.starships.length > 0 && (
+            {(related?.starships ?? []).length > 0 && (
               <span className="related-field">
-                <strong>Starships: </strong> {related.starships.join(", ")}
+                <strong>Starships: </strong> {related!.starships!.join(", ")}
               </span>
             )}
           </div>

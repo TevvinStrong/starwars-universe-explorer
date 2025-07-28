@@ -23,3 +23,10 @@ export interface RelatedData {
 export interface CharacterCardProps {
   index: number;
 }
+
+// Deffine related data interface
+export interface RelatedData {
+  homeworld?: string;
+  species?: string[];
+  starships?: string[];
+}

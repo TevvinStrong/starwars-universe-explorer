@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
 import { characterListState } from "../atoms/characterListState";
+import { characterCardLoadingState } from "../atoms/characterCardLoadingState";
 
 import CharacterCard from "./characterCard";
 
@@ -12,8 +13,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const CharacterList: FC = () => {
+  // State
   const characters = useRecoilValue(characterListState);
   const setCharacters = useSetRecoilState(characterListState);
+  const setLoading = useSetRecoilState(characterCardLoadingState);
 
   useEffect(() => {
     // Fetch character data from: https://swapi.info/api/people
@@ -26,6 +29,11 @@ const CharacterList: FC = () => {
         console.error("yeet error fetching starwars data: ", error)
       );
   }, [setCharacters]);
+
+  // Reset loading state when the component mounts
+  useEffect(() => {
+    setLoading(false);
+  }, [setLoading]);
 
   return (
     <>
