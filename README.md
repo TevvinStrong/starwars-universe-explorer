@@ -1,6 +1,6 @@
 # Star Wars Universe Explorer
 
-![alt text](image.png)
+![Star Wars Logo](src/images/image.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
