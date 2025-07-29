@@ -4,6 +4,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Clone
+
+Before getting started with the following, ensure the repo in cloned on your local maching.
+
 ## Available Scripts
 
 In the project directory, you can run:
