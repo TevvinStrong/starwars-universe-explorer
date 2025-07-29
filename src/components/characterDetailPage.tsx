@@ -13,24 +13,40 @@ import { CharacterType } from "../helpers/helpers";
 import "../styles/characterDetailPage.css";
 
 const CharacterDetailPage: FC = () => {
+  // Use useNavigate to navigate back to the character list
   const navigate = useNavigate();
+
+  // Get `id` parameter from the URL
   const { id } = useParams();
+
+  // Convert string id to number index
   const characterIndex = parseInt(id || "0", 10);
+
+  // Get the full list of characters from Recoil state
   const charactersList = useRecoilValue(characterListState) as CharacterType[];
+
+  // Use the index to get the specific character
   const character = charactersList[characterIndex];
 
+  // Related data and loading state from Recoil
   const [related, setRelated] = useRecoilState(relatedDataState);
   const [loading, setLoading] = useRecoilState(relatedDataLoadingState);
+
+  // Reset functions to clear related data
   const resetRelated = useResetRecoilState(relatedDataState);
   const resetLoading = useResetRecoilState(relatedDataLoadingState);
 
+  // Fetch related data 'homeworld, species, starships'
   useEffect(() => {
     if (!character) return;
 
+    // Set loading to true to show spinner
     setLoading(true);
 
+    // asynchronously fetch related data from SWAPI
     async function fetchRelated() {
       try {
+        // Get homeworld and species data
         const [home, ...species] = await Promise.all([
           character.homeworld
             ? fetch(character.homeworld).then((r) => r.json())
@@ -38,10 +54,12 @@ const CharacterDetailPage: FC = () => {
           ...character.species.map((url) => fetch(url).then((r) => r.json())),
         ]);
 
+        // Get starship data
         const starshipsData = await Promise.all(
           character.starships.map((url) => fetch(url).then((r) => r.json()))
         );
 
+        // Store related data in Recoil state
         setRelated({
           homeworld: home?.name,
           species: species.map((s) => s.name),
@@ -50,20 +68,20 @@ const CharacterDetailPage: FC = () => {
       } catch (err) {
         console.error("Error fetching related data", err);
       } finally {
-        // Pulled this from stackoverflow to ensure loading state is set correctly
-        // https://stackoverflow.com/questions/75392123/set-loading-with-react-useeffect-fails
+        // Set loading to false to remove spinner
         setLoading(false);
       }
     }
-
+    // Call the fetch function
     fetchRelated();
-
+    // Cleanup function on component unmount
     return () => {
       resetRelated();
       resetLoading();
     };
   }, [character, setRelated, setLoading, resetRelated, resetLoading]);
 
+  // If no character is found, display a message
   if (!character) {
     return (
       <div className="character-detail-container">Character not found.</div>

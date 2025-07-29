@@ -1,4 +1,4 @@
-// Define shape of character object and related data
+// Define character data structure
 export interface CharacterType {
   name: string;
   gender: string;
@@ -13,7 +13,8 @@ export interface CharacterType {
   starships: string[];
 }
 
-export interface RelatedData {
+// Define related data structure
+export interface RelatedDataType {
   homeworld?: string;
   species?: string[];
   starships?: string[];
@@ -22,11 +23,4 @@ export interface RelatedData {
 // Define props for CharacterCard component
 export interface CharacterCardProps {
   index: number;
-}
-
-// Deffine related data interface
-export interface RelatedData {
-  homeworld?: string;
-  species?: string[];
-  starships?: string[];
 }

@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-import { RelatedData } from "../helpers/helpers";
+import { RelatedDataType } from "../helpers/helpers";
 
-export const relatedDataState = atom<RelatedData | null>({
+export const relatedDataState = atom<RelatedDataType | null>({
   key: "relatedDataState",
   default: null,
 });
