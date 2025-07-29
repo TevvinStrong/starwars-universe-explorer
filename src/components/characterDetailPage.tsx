@@ -16,7 +16,7 @@ const CharacterDetailPage: FC = () => {
   // Use useNavigate to navigate back to the character list
   const navigate = useNavigate();
 
-  // Get `id` parameter from the URL
+  // Get 'id' parameter from the URL
   const { id } = useParams();
 
   // Convert string id to number index
@@ -28,7 +28,7 @@ const CharacterDetailPage: FC = () => {
   // Use the index to get the specific character
   const character = charactersList[characterIndex];
 
-  // Related data and loading state from Recoil
+  // State
   const [related, setRelated] = useRecoilState(relatedDataState);
   const [loading, setLoading] = useRecoilState(relatedDataLoadingState);
 
@@ -36,7 +36,7 @@ const CharacterDetailPage: FC = () => {
   const resetRelated = useResetRecoilState(relatedDataState);
   const resetLoading = useResetRecoilState(relatedDataLoadingState);
 
-  // Fetch related data 'homeworld, species, starships'
+  // Fetch related data 'homeworld' 'species' 'starships'
   useEffect(() => {
     if (!character) return;
 
